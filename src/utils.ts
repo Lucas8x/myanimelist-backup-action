@@ -18,11 +18,12 @@ function formatString(tokens: IFormatTokens, format: string) {
 
 export function formatAnimeEntry(entry: IAnime, format = DEFAULT_ANIME_FORMAT) {
   let tokens = {
+    id: entry['anime_id'],
     t: entry['anime_title'],
     T: entry['anime_title_eng'],
+    s: entry['score'],
     wep: entry['num_watched_episodes'],
     tep: entry['anime_num_episodes'],
-    s: entry['score'],
     sd: entry['start_date_string'],
     ed: entry['end_date_string'],
   };
@@ -32,10 +33,12 @@ export function formatAnimeEntry(entry: IAnime, format = DEFAULT_ANIME_FORMAT) {
 
 export function formatMangaEntry(entry: IManga, format = DEFAULT_MANGA_FORMAT) {
   let tokens = {
+    id: entry['manga_id'],
     t: entry['manga_title'],
+    s: entry['score'],
     cr: entry['num_read_chapters'],
     tc: entry['manga_num_chapters'],
-    vr: entry['num_read_volumes'],
+    rv: entry['num_read_volumes'],
     tv: entry['manga_num_volumes'],
     sd: entry['start_date_string'],
     fd: entry['finish_date_string'],
