@@ -15,4 +15,4 @@ export const FORMAT_TOKEN_PREFIX = '%';
 
 export const DEFAULT_ANIME_FORMAT = '%t - Ep %wep/%tep';
 
-export const DEFAULT_MANGA_FORMAT = '%t - Ch %cr/%tc - Vol %rv/%tv';
+export const DEFAULT_MANGA_FORMAT = '%t - Ch %cr/%tc - Vol %vr/%tv';

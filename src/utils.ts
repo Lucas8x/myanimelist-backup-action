@@ -25,7 +25,8 @@ export function formatAnimeEntry(entry: IAnime, format = DEFAULT_ANIME_FORMAT) {
     wep: entry['num_watched_episodes'],
     tep: entry['anime_num_episodes'],
     sd: entry['start_date_string'],
-    ed: entry['end_date_string'],
+    ed: entry['finish_date_string'],
+    amt: entry['anime_media_type_string'],
   };
 
   return formatString(tokens, format);
@@ -35,20 +36,39 @@ export function formatMangaEntry(entry: IManga, format = DEFAULT_MANGA_FORMAT) {
   let tokens = {
     id: entry['manga_id'],
     t: entry['manga_title'],
+    T: entry['manga_english'],
     s: entry['score'],
     cr: entry['num_read_chapters'],
     tc: entry['manga_num_chapters'],
-    rv: entry['num_read_volumes'],
+    vr: entry['num_read_volumes'],
     tv: entry['manga_num_volumes'],
     sd: entry['start_date_string'],
     fd: entry['finish_date_string'],
+    mmt: entry['manga_media_type_string'],
   };
 
   return formatString(tokens, format);
 }
 
-export function formatListToTxt(f: (entry: {}) => string, data: Array<{}>) {
-  return data.map((entry) => f(entry)).join('\n');
+export function formatListToTxt(
+  data: IAnimeList | IMangaList,
+  listType: IListTypes,
+) {
+  if (listType === 'animelist') {
+    const anime_format =
+      core.getInput('anime_string_format') || DEFAULT_ANIME_FORMAT;
+
+    return data
+      .map((entry) => formatAnimeEntry(entry, anime_format))
+      .join('\n');
+  } else if (listType === 'mangalist') {
+    const manga_format =
+      core.getInput('manga_string_format') || DEFAULT_MANGA_FORMAT;
+
+    return data
+      .map((entry) => formatMangaEntry(entry, manga_format))
+      .join('\n');
+  }
 }
 
 export function mkdir(dir: string) {

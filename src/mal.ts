@@ -2,13 +2,7 @@ import * as core from '@actions/core';
 import path from 'node:path';
 import { LIST_STATUS, MAL_LIST_TYPES } from './constants';
 import { commit } from './github';
-import {
-  formatAnimeEntry,
-  formatListToTxt,
-  formatMangaEntry,
-  mkdir,
-  writeFile,
-} from './utils';
+import { formatListToTxt, mkdir, writeFile } from './utils';
 
 async function preCommit(data: any, outputDir: string, fileName: string) {
   if (data.length > 0) {
@@ -93,13 +87,13 @@ export class MAL {
 
   async save(outputDir: string) {
     await preCommit(
-      formatListToTxt(formatAnimeEntry, this.animeList),
+      formatListToTxt(this.animeList, 'animelist'),
       outputDir,
       `${this.username}_anime_list.txt`,
     );
 
     await preCommit(
-      formatListToTxt(formatMangaEntry, this.mangaList),
+      formatListToTxt(this.mangaList, 'mangalist'),
       outputDir,
       `${this.username}_manga_list.txt`,
     );
