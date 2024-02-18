@@ -6,11 +6,11 @@ import {
   FORMAT_DELIMITER,
 } from './constants';
 
-function formatString(tokens: IFormatTokens, format: string) {
+export function formatString(tokens: IFormatTokens, format: string) {
   for (const [key, value] of Object.entries(tokens)) {
     format = format.replace(
       `${FORMAT_DELIMITER}${key}${FORMAT_DELIMITER}`,
-      String(value !== null ? value : ''),
+      String(value !== null ? value : '?'),
     );
   }
   return format;
@@ -20,12 +20,14 @@ export function formatAnimeEntry(entry: IAnime, format = DEFAULT_ANIME_FORMAT) {
   let tokens = {
     id: entry['anime_id'],
     t: entry['anime_title'],
-    T: entry['anime_title_eng'],
+    T:
+      entry['anime_title_eng'] ||
+      (!format.includes('%t%') ? entry['anime_title'] : '?'),
     s: entry['score'],
     wep: entry['num_watched_episodes'],
     tep: entry['anime_num_episodes'],
     sd: entry['start_date_string'],
-    ed: entry['finish_date_string'],
+    fd: entry['finish_date_string'],
     amt: entry['anime_media_type_string'],
   };
 
@@ -36,7 +38,9 @@ export function formatMangaEntry(entry: IManga, format = DEFAULT_MANGA_FORMAT) {
   let tokens = {
     id: entry['manga_id'],
     t: entry['manga_title'],
-    T: entry['manga_english'],
+    T:
+      entry['manga_english'] ||
+      (!format.includes('%t%') ? entry['manga_title'] : ''),
     s: entry['score'],
     cr: entry['num_read_chapters'],
     tc: entry['manga_num_chapters'],

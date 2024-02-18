@@ -87,7 +87,7 @@ You can also change directly on the workflow file like this: `mal_username: ${{ 
 | `%wep%`                 | Episodes you watched                                   | 1                |
 | `%tep%`                 | Total anime episodes                                   | 1                |
 | `%sd%`                  | When you started watching                              | 18-05-17         |
-| `%ed%`                  | When you finished watching                             | 18-05-17         |
+| `%fd%`                  | When you finished watching                             | 18-05-17         |
 | `%amt%`                 | What kind of anime (TV, OVA, Movie,...)                | Movie            |
 
 All anime types: `TV` `OVA` `Movie` `Special` `ONA` `Music` `CM` `PV` `TV Special`

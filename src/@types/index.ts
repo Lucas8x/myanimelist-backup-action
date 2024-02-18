@@ -1,6 +1,6 @@
 // Internal
 type IFormatTokens = {
-  [key: string]: string | number;
+  [key: string]: string | number | boolean | null;
 };
 
 // MyAnimeList

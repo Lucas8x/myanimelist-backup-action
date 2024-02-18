@@ -1,0 +1,57 @@
+{
+  "status": 2,
+  "score": 10,
+  "tags": "",
+  "is_rewatching": 0,
+  "num_watched_episodes": 1,
+  "created_at": 1472990784,
+  "updated_at": 1704799358,
+  "anime_title": "Koe no Katachi",
+  "anime_title_eng": "A Silent Voice",
+  "anime_num_episodes": 1,
+  "anime_airing_status": 2,
+  "anime_id": 28851,
+  "anime_studios": null,
+  "anime_licensors": null,
+  "anime_season": null,
+  "anime_total_members": 2295616,
+  "anime_total_scores": 1591335,
+  "anime_score_val": 8.93,
+  "anime_score_diff": 1.07,
+  "anime_popularity": 20,
+  "has_episode_video": false,
+  "has_promotion_video": true,
+  "has_video": true,
+  "video_url": "/anime/28851/Koe_no_Katachi/video",
+  "genres": [
+    {
+      "id": 46,
+      "name": "Award Winning"
+    },
+    {
+      "id": 8,
+      "name": "Drama"
+    }
+  ],
+  "demographics": [
+    {
+      "id": 27,
+      "name": "Shounen"
+    }
+  ],
+  "title_localized": null,
+  "anime_url": "/anime/28851/Koe_no_Katachi",
+  "anime_image_path": "https://cdn.myanimelist.net/r/192x272/images/anime/1122/96435.jpg?s=93a12868f53676988803e1d1cd22f1d2",
+  "is_added_to_list": false,
+  "anime_media_type_string": "Movie",
+  "anime_mpaa_rating_string": "PG-13",
+  "start_date_string": "18-05-17",
+  "finish_date_string": "18-05-17",
+  "anime_start_date_string": "17-09-16",
+  "anime_end_date_string": "17-09-16",
+  "days_string": 1,
+  "storage_string": "HD 0.0 Gb",
+  "priority_string": "High",
+  "notes": "",
+  "editable_notes": ""
+}

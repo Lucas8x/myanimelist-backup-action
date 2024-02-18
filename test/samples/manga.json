@@ -1,0 +1,47 @@
+{
+  "id": 79715164,
+  "status": 1,
+  "score": 8,
+  "tags": "",
+  "is_rereading": 0,
+  "num_read_chapters": 53,
+  "num_read_volumes": 6,
+  "created_at": 1566104371,
+  "manga_title": "Akarui Kioku Soushitsu",
+  "manga_english": "Cheerful Amnesia",
+  "manga_num_chapters": 67,
+  "manga_num_volumes": 6,
+  "manga_publishing_status": 2,
+  "manga_id": 103162,
+  "manga_magazines": null,
+  "manga_total_members": 17717,
+  "manga_total_scores": 6118,
+  "manga_score_val": 7.49,
+  "manga_score_diff": 0.51,
+  "manga_popularity": 1021,
+  "genres": [
+    {
+      "id": 4,
+      "name": "Comedy"
+    },
+    {
+      "id": 26,
+      "name": "Girls Love"
+    }
+  ],
+  "demographics": [],
+  "title_localized": null,
+  "manga_url": "/manga/103162/Akarui_Kioku_Soushitsu",
+  "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/1/190876.jpg?s=adda6ed4e1df85cf1ceccfaf982dcb44",
+  "is_added_to_list": false,
+  "manga_media_type_string": "Manga",
+  "start_date_string": "20-08-19",
+  "finish_date_string": null,
+  "manga_start_date_string": "27-06-16",
+  "manga_end_date_string": "26-12-20",
+  "days_string": 1643,
+  "retail_string": null,
+  "priority_string": "Low",
+  "notes": "",
+  "editable_notes": ""
+}
