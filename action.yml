@@ -18,11 +18,11 @@ inputs:
     default: .
   anime_string_format:
     description: Anime string format on txt file
-    default: '%t - Ep %wep/%tep'
+    default: '%t% - Ep %wep%/%tep%'
     # Result: Sailor Moon - Ep 46/46
   manga_string_format:
     description: Manga string format on txt file
-    default: '%t - Ch %cr/%tc - Vol %vr/%tv'
+    default: '%t% - Ch %cr%/%tc% - Vol %vr%/%tv%'
     # Result: Sailor Moon - Ch 61/61 - Vol 18/18
 
 runs:

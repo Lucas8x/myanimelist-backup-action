@@ -73,48 +73,48 @@ You can also change directly on the workflow file like this: `mal_username: ${{ 
 | `mal_username`         | Your MyAnimeList Username                        |               | ✔        |
 | `mal_list_type`        | Which list to save (anime, manga, both)          | `both`        |          |
 | `output_dir`           | Where to save the files in repository            | `.`           |          |
-| `anime_string_format`  | How anime string will be formatted on txt file   | '%t - Ep %wep/%tep' | |
-| `manga_string_format`  | How manga string will be formatted on txt file   | '%t - Ch %cr/%tc - Vol %vr/%tv' | |
+| `anime_string_format`  | How anime string will be formatted on txt file   | '%t% - Ep %wep%/%tep%' | |
+| `manga_string_format`  | How manga string will be formatted on txt file   | '%t% - Ch %cr%/%tc% - Vol %vr%/%tv%' | |
 
 ## 📺 Anime Format Tokens
 
-| Token                  | Description                                            | Example          |
-| ---------------------- | -----------------------------------------------------  | ---------------- |
-| `%id`                  | Anime id                                               | 28851            |
-| `%t`                   | Anime title                                            | `Koe no Katachi` |
-| `%T`                   | English Anime title                                    | `A Silent Voice` |
-| `%s`                   | Your anime score                                       | 10               |
-| `%wep`                 | Episodes you watched                                   | 1                |
-| `%tep`                 | Total anime episodes                                   | 1                |
-| `%sd`                  | When you started watching                              | 18-05-17         |
-| `%ed`                  | When you finished watching                             | 18-05-17         |
-| `%amt`                 | What kind of anime (TV, OVA, Movie,...)                | Movie            |
+| Token                  | Description                                             | Example          |
+| ---------------------- | ------------------------------------------------------  | ---------------- |
+| `%id%`                  | Anime id                                               | 28851            |
+| `%t%`                   | Anime title                                            | `Koe no Katachi` |
+| `%T%`                   | English Anime title                                    | `A Silent Voice` |
+| `%s%`                   | Your anime score                                       | 10               |
+| `%wep%`                 | Episodes you watched                                   | 1                |
+| `%tep%`                 | Total anime episodes                                   | 1                |
+| `%sd%`                  | When you started watching                              | 18-05-17         |
+| `%ed%`                  | When you finished watching                             | 18-05-17         |
+| `%amt%`                 | What kind of anime (TV, OVA, Movie,...)                | Movie            |
 
 All anime types: `TV` `OVA` `Movie` `Special` `ONA` `Music` `CM` `PV` `TV Special`
 
-Example: `[%id] - %t - [%wep/%tep]`
+Example: `[%id%] - %t% - [%wep%/%tep%]`
 
 Result: `[28851] - Koe no Katachi - [1/1]`
 
 ## 📚 Manga Format Tokens
 
-| Token                  | Description                                         | Example                  |
-| ---------------------- | --------------------------------------------------- | ------------------------ |
-| `%id`                  | Manga id                                            | 103162                   |
-| `%t`                   | Manga title                                         | `Akarui Kioku Soushitsu` |
-| `%T`                   | English Manga title                                 | `Cheerful Amnesia`       |
-| `%s`                   | Your manga score                                    | 10                       |
-| `%cr`                  | Chapters you read                                   | 53                       |
-| `%tc`                  | Total manga chapters                                | 67                       |
-| `%vr`                  | Volumes you read                                    | 6                        |
-| `%tv`                  | Total manga volumes                                 | 6                        |
-| `%sd`                  | When you started reading                            | 20-08-19                 |
-| `%fd`                  | When you finished reading                           | 24-02-22                 |
-| `%mmt`                 | What kind of manga (Manga, Light Novel,...)         | Manga                    |
+| Token                  | Description                                          | Example                  |
+| ---------------------- | ---------------------------------------------------- | ------------------------ |
+| `%id%`                  | Manga id                                            | 103162                   |
+| `%t%`                   | Manga title                                         | `Akarui Kioku Soushitsu` |
+| `%T%`                   | English Manga title                                 | `Cheerful Amnesia`       |
+| `%s%`                   | Your manga score                                    | 10                       |
+| `%cr%`                  | Chapters you read                                   | 53                       |
+| `%tc%`                  | Total manga chapters                                | 67                       |
+| `%vr%`                  | Volumes you read                                    | 6                        |
+| `%tv%`                  | Total manga volumes                                 | 6                        |
+| `%sd%`                  | When you started reading                            | 20-08-19                 |
+| `%fd%`                  | When you finished reading                           | 24-02-22                 |
+| `%mmt%`                 | What kind of manga (Manga, Light Novel,...)         | Manga                    |
 
 All manga types: `Manga` `One-shot` `Doujinshi` `Light Novel` `Novel` `Manhwa` `Manhua`
 
-Example: `[%mmt] - %T - [%cr/%tc]`
+Example: `[%mmt%] - %T% - [%cr%/%tc%]`
 
 Result: `[Manga] - Cheerful Amnesia - [53/67]`
 

@@ -3,13 +3,13 @@ import fs from 'node:fs';
 import {
   DEFAULT_ANIME_FORMAT,
   DEFAULT_MANGA_FORMAT,
-  FORMAT_TOKEN_PREFIX,
+  FORMAT_DELIMITER,
 } from './constants';
 
 function formatString(tokens: IFormatTokens, format: string) {
   for (const [key, value] of Object.entries(tokens)) {
     format = format.replace(
-      `${FORMAT_TOKEN_PREFIX}${key}`,
+      `${FORMAT_DELIMITER}${key}${FORMAT_DELIMITER}`,
       String(value !== null ? value : ''),
     );
   }

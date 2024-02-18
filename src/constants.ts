@@ -11,8 +11,8 @@ export const LIST_STATUS = {
   all: 7,
 };
 
-export const FORMAT_TOKEN_PREFIX = '%';
+export const FORMAT_DELIMITER = '%';
 
-export const DEFAULT_ANIME_FORMAT = '%t - Ep %wep/%tep';
+export const DEFAULT_ANIME_FORMAT = '%t% - Ep %wep%/%tep%';
 
-export const DEFAULT_MANGA_FORMAT = '%t - Ch %cr/%tc - Vol %vr/%tv';
+export const DEFAULT_MANGA_FORMAT = '%t% - Ch %cr%/%tc% - Vol %vr%/%tv%';
