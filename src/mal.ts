@@ -2,14 +2,13 @@ import * as core from '@actions/core';
 import path from 'node:path';
 import { LIST_STATUS, MAL_LIST_TYPES } from './constants';
 import { commit } from './github';
-import { formatListToTxt, mkdir, writeFile } from './utils';
+import { formatListToTxt } from './utils';
 
 async function preCommit(data: any, outputDir: string, fileName: string) {
-  if (data.length > 0) {
-    const filePath = path.join(outputDir, fileName);
-    core.info(`Commiting ${filePath}`);
-    await commit(data, filePath);
-  }
+  if (!data.length) return;
+  const filePath = path.join(outputDir, fileName);
+  core.info(`Commiting ${filePath}`);
+  await commit(data, filePath);
 }
 
 export class MAL {

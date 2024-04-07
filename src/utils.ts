@@ -58,21 +58,17 @@ export function formatListToTxt(
   data: IAnimeList | IMangaList,
   listType: IListTypes,
 ) {
-  if (listType === 'animelist') {
-    const anime_format =
-      core.getInput('anime_string_format') || DEFAULT_ANIME_FORMAT;
+  const format =
+    listType === 'animelist'
+      ? core.getInput('anime_string_format') || DEFAULT_ANIME_FORMAT
+      : core.getInput('manga_string_format') || DEFAULT_MANGA_FORMAT;
 
-    return data
-      .map((entry) => formatAnimeEntry(entry, anime_format))
-      .join('\n');
-  } else if (listType === 'mangalist') {
-    const manga_format =
-      core.getInput('manga_string_format') || DEFAULT_MANGA_FORMAT;
+  const formatter =
+    listType === 'animelist' ? formatAnimeEntry : formatMangaEntry;
 
-    return data
-      .map((entry) => formatMangaEntry(entry, manga_format))
-      .join('\n');
-  }
+  return data
+    .map((entry: IAnime & IManga) => formatter(entry, format))
+    .join('\n');
 }
 
 export function mkdir(dir: string) {

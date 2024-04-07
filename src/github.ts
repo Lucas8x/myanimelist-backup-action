@@ -1,7 +1,7 @@
 import * as core from '@actions/core';
 import { Octokit } from '@octokit/action';
 import { components } from '@octokit/openapi-types';
-import dayjs from 'dayjs';
+import path from 'node:path';
 
 type GetRepoContentResponseDataFile = components['schemas']['content-file'];
 
@@ -32,9 +32,9 @@ async function getContent(path: string) {
   }
 }
 
-export async function commit(data: string, path: string) {
+export async function commit(data: string, filePath: string) {
   try {
-    const prevFile = await getContent(path);
+    const prevFile = await getContent(filePath);
 
     const newBase64Content = Buffer.from(data, 'utf8').toString('base64');
 
@@ -43,11 +43,14 @@ export async function commit(data: string, path: string) {
       return;
     }
 
+    const fileName = path.basename(filePath);
+    const message = `Update ${fileName}`;
+
     const { status } = await octokit.repos.createOrUpdateFileContents({
       owner,
       repo,
-      path,
-      message: `Update list on ${dayjs().format('YYYY-MM-DD HH:mm:ss')}`,
+      path: filePath,
+      message,
       content: newBase64Content,
       sha: prevFile && prevFile.sha,
     });
