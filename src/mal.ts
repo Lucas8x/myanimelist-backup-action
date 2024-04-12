@@ -1,14 +1,14 @@
 import * as core from '@actions/core';
 import path from 'node:path';
 import { LIST_STATUS, MAL_LIST_TYPES } from './constants';
-import { isDev, isGhAction } from './env';
+import { isGhAction } from './env';
 import { Github } from './github';
 import { formatListToTxt, mkdir, writeFile } from './utils';
 
-const github = !isDev && isGhAction && new Github();
+const github = isGhAction && new Github();
 
 async function preCommit(data: string, outputDir: string, fileName: string) {
-  if (isDev || !isGhAction) {
+  if (!isGhAction) {
     const outputPath = path.resolve(outputDir);
     const filePath = path.join(outputPath, fileName);
     mkdir(outputPath);
