@@ -1,22 +1,36 @@
 import * as core from '@actions/core';
 import path from 'node:path';
 import { LIST_STATUS, MAL_LIST_TYPES } from './constants';
-import { commit } from './github';
-import { formatListToTxt } from './utils';
+import { isDev, isGhAction } from './env';
+import { Github } from './github';
+import { formatListToTxt, mkdir, writeFile } from './utils';
 
-async function preCommit(data: any, outputDir: string, fileName: string) {
-  if (!data.length) return;
+const github = !isDev && isGhAction && new Github();
+
+async function preCommit(data: string, outputDir: string, fileName: string) {
+  if (isDev || !isGhAction) {
+    const outputPath = path.resolve(outputDir);
+    const filePath = path.join(outputPath, fileName);
+    mkdir(outputPath);
+    writeFile(filePath, data);
+    return;
+  }
+
   const filePath = path.join(outputDir, fileName);
   core.info(`Commiting ${filePath}`);
-  await commit(data, filePath);
+  await github.commit(data, filePath);
 }
 
+const hideUsername = core.getBooleanInput('hide_username');
+
 export class MAL {
-  constructor(
-    public username: string,
-    public animeList: IAnimeList = [],
-    public mangaList: IMangaList = [],
-  ) {}
+  private animeList: IAnimeList = [];
+  private mangaList: IMangaList = [];
+
+  constructor(public username: string) {
+    this.animeList = [];
+    this.mangaList = [];
+  }
 
   async fetch(listType: IListTypes) {
     if (!MAL_LIST_TYPES.includes(listType)) {
@@ -34,7 +48,9 @@ export class MAL {
           status: `${LIST_STATUS.all}`,
         });
 
-        core.info(`Fetching ${this.username} ${listType} list... [${offset}]`);
+        core.info(
+          `Fetching ${hideUsername ? '' : this.username + ' '}${listType} list... [${offset}]`,
+        );
 
         const response = await fetch(`${apiURL}?${params.toString()}`);
         if (!response.ok) {
@@ -70,17 +86,21 @@ export class MAL {
     this.mangaList = await this.fetch('mangalist');
   }
 
+  private formatFilename(fileName: string) {
+    return hideUsername ? fileName : `${this.username}_${fileName}`;
+  }
+
   async rawSave(outputDir: string) {
     await preCommit(
       JSON.stringify(this.animeList, null, 2),
       outputDir,
-      `${this.username}_raw_anime_list.json`,
+      this.formatFilename('raw_anime_list.json'),
     );
 
     await preCommit(
       JSON.stringify(this.mangaList, null, 2),
       outputDir,
-      `${this.username}_raw_manga_list.json`,
+      this.formatFilename('raw_manga_list.json'),
     );
   }
 
@@ -88,13 +108,13 @@ export class MAL {
     await preCommit(
       formatListToTxt(this.animeList, 'animelist'),
       outputDir,
-      `${this.username}_anime_list.txt`,
+      this.formatFilename('anime_list.txt'),
     );
 
     await preCommit(
       formatListToTxt(this.mangaList, 'mangalist'),
       outputDir,
-      `${this.username}_manga_list.txt`,
+      this.formatFilename('manga_list.txt'),
     );
   }
 }

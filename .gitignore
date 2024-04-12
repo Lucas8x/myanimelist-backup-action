@@ -1,4 +1,5 @@
 .env
+/output
 
 # dependencies
 /node_modules

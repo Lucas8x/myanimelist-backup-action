@@ -56,6 +56,7 @@ jobs:
             output_dir: ${{ vars.MAL_OUTPUT_DIR }}
             anime_string_format: ${{ vars.ANIME_STRING_FORMAT }}
             manga_string_format: ${{ vars.MANGA_STRING_FORMAT }}
+            hide_username: ${{ vars.HIDE_USERNAME }}
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   ```
@@ -68,13 +69,14 @@ You can also change directly on the workflow file like this: `mal_username: ${{ 
 
 ## ⚙ Settings
 
-| Input                  | Description                                      | Default       | Required |
-| ---------------------- | ------------------------------------------------ | ------------- | -------- |
-| `mal_username`         | Your MyAnimeList Username                        |               | ✔        |
-| `mal_list_type`        | Which list to save (anime, manga, both)          | `both`        |          |
-| `output_dir`           | Where to save the files in repository            | `.`           |          |
-| `anime_string_format`  | How anime string will be formatted on txt file   | `'%t% - Ep %wep%/%tep%'` | |
-| `manga_string_format`  | How manga string will be formatted on txt file   | `'%t% - Ch %cr%/%tc% - Vol %vr%/%tv%'` | |
+| Input                  | Description                                         | Default       | Required |
+| ---------------------- | --------------------------------------------------- | ------------- | -------- |
+| `mal_username`         | Your MyAnimeList Username                           |               | ✔        |
+| `mal_list_type`        | Which list to save (anime, manga, both)             | `both`        |          |
+| `output_dir`           | Where to save the files in repository               | `.`           |          |
+| `anime_string_format`  | How anime string will be formatted on txt file      | `'%t% - Ep %wep%/%tep%'` | |
+| `manga_string_format`  | How manga string will be formatted on txt file      | `'%t% - Ch %cr%/%tc% - Vol %vr%/%tv%'` | |
+| `hide_username`        | Hide your MyAnimeList username from logs and files  | `false`           |          |
 
 ## 📺 Anime Format Tokens
 

@@ -24,6 +24,9 @@ inputs:
     description: Manga string format on txt file
     default: '%t% - Ch %cr%/%tc% - Vol %vr%/%tv%'
     # Result: Sailor Moon - Ch 61/61 - Vol 18/18
+  hide_username:
+    description: 'Hide your MyAnimeList username from logs and files'
+    default: 'false'
 
 runs:
   using: node20
